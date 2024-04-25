@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="safe-area">
+  <head>
+    <meta charset="UTF-8" />
+    <title>App - Safe Area</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link href="../../../../../css/ionic.bundle.css" rel="stylesheet" />
+    <script type="module" src="../../../../../dist/ionic/ionic.esm.js"></script>
+
+    <style>
+      body {
+        display: flex;
+
+        height: 100%;
+
+        align-items: center;
+
+        justify-content: center;
+      }
+
+      .container {
+        width: 300px;
+      }
+
+      ion-app.ion-page {
+        justify-content: center;
+        align-items: center;
+      }
+
+      ion-content::part(scroll) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      button {
+        width: 100%;
+
+        background: var(--ion-color-primary);
+        color: var(--ion-color-primary-contrast);
+
+        border-radius: 8px;
+
+        height: 44px;
+
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <ion-app>
+      <ion-content>
+        <div class="container"></div>
+      </ion-content>
+
+      <script>
+        const container = document.querySelector('.container');
+
+        const submitForm = (ev) => {
+          container.innerHTML = `
+            <h2>Purrrrfect! You're on your way to receiving cat facts.</h2><br />
+            <button type="button" onclick="renderForm()">Submit Another Response</button>
+          `;
+
+          ev.preventDefault();
+        }
+
+        const renderForm = () => {
+          container.innerHTML = `
+            <form>
+              <h1>Register for Cat Facts</h1>
+              <ion-input fill="outline" label-placement="floating" type="text" label="Name"></ion-input>
+
+              <br />
+
+              <button type="submit">Submit</button>
+            </form>
+          `;
+
+          const form = document.querySelector('form');
+          form.onsubmit = submitForm;
+        }
+
+        renderForm();
+
+        window.Ionic = {
+          config: {
+            mode: 'md'
+          }
+        }
+      </script>
+    </ion-app>
+  </body>
+</html>
