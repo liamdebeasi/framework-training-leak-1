@@ -49,6 +49,15 @@
         font-size: 1rem;
       }
     </style>
+    <script>
+      window.addEventListener('appload', () => {
+        // remove stencil dev tools which can create false positive memory leaks
+        window.stencil = undefined;
+
+        // you can remove this if you need HMR when debugging, but it may cause false positive memory leaks
+        window.__STENCIL_HOSTREFS__ = undefined;
+      });
+    </script>
   </head>
   <body>
     <ion-app>
